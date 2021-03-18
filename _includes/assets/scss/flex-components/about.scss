@@ -1,0 +1,67 @@
+@use '../variables' as v;
+
+.about{
+  padding: 5rem 0 4rem;
+  .row {
+    justify-content: center
+  }
+  .about-photo {
+    border-radius: 100%;
+    overflow:hidden;
+    width: clamp(135px, 18vw, 265px);
+    height: clamp(135px, 18vw, 265px);
+  }
+  
+  h3.about-headline {
+    font-size:36px;
+    line-height: 1.2;
+    span{
+      text-decoration-skip-ink: none;
+      text-underline-offset: -0.15em;
+      &.purple{
+        text-decoration: underline 0.3em v.$purple;
+      }
+      &.green{
+        text-decoration: underline 0.3em v.$green;
+      }
+      &.pink{
+        text-decoration: underline 0.3em v.$pink;
+      }
+      &.yellow{
+        text-decoration: underline 0.3em v.$yellow;
+      }
+      
+    }
+  }
+
+}
+@media screen and (min-width: 700px) and (max-width: 850px){
+  .about{
+    .row {
+      justify-content: start
+    }
+    .col-7{
+      width: percentage(8/12);
+    }
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 699px){
+  .about{
+    .col-3 {
+      display: none;
+    }
+    .col-7{
+      width: percentage(10/12);
+    }
+  }
+}
+@media screen and (max-width: 599px){
+  .about{
+    .col-3 {
+      display: none;
+    }
+    .col-7{
+      width: percentage(12/12);
+    }
+  }
+}

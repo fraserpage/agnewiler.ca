@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+section: posts
+permalink: /posts/index.html
+---
+
+{% include "flex-components/flex-area.njk" %}
+
+<div class="content posts-list posts-page">
+  {% set postslist = collections.post | reverse %}
+  {% include "components/postslist.njk" %}
+</div>

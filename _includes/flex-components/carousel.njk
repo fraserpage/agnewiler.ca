@@ -1,0 +1,15 @@
+<div class="headline content">
+  {% if section.textArea %}
+    {{section.textArea | renderMarkdown | safe }}
+  {% endif %}
+</div>
+
+<div class="slider {% if section.images.length > 1 %} slideshow {% endif %}" data-length="{{section.images.length}}" data-timing="{{section.timer}}" data-current-slide="0">
+  {% for image in section.images %}
+    {% if loop.index == 1 %}
+      <img class="current-slide" data-loaded="true" src="{{image.image}}" alt="{{image.alt}}">
+    {% else %}
+      <img  data-loaded="false" data-src="{{image.image}}" alt="{{image.alt}}">
+    {% endif %}
+  {% endfor %}
+</div>

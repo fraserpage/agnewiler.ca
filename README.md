@@ -108,6 +108,13 @@ Or build automatically when a template changes:
 npx @11ty/eleventy --watch
 ```
 
+Serve locally:
+```
+npx @11ty/eleventy --serve
+```
+>> Run Netlify CMS proxy server
+npx netlify-cms-proxy-server
+
 Or in debug mode:
 ```
 DEBUG=* npx @11ty/eleventy

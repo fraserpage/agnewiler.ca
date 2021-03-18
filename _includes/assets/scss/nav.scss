@@ -1,0 +1,81 @@
+@use 'variables' as v;
+
+/* Header */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:3.4rem;
+  background-color: v.$dark-purple;
+  font-family: v.$font-sans;
+  transition: transform 0.2s;
+  transform: translateY(-65px);
+  z-index: 100;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  &.show-header,
+  &.show-header-always{
+    transform: translateY(0);
+  }
+  .content{
+    display: flex;
+  }
+  
+  /* Header Logo*/
+  div.logo {
+    a{
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.25;
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+  }
+  /* Nav */
+  nav#desktop-nav {
+    margin: 0.2rem 0 0 auto;
+    height: 1.3rem;
+    overflow: hidden;
+    ul {
+      padding: 0;
+      list-style: none;
+      display: inline;
+
+      li:first-child {
+        margin-left: 1em;
+      }
+      li:last-of-type{
+        margin-right: 0;
+      }
+      li {
+        display: inline-block;
+        margin: 0 .5em;
+    
+        a {
+          font-weight: 500;
+          padding: .25em 0;
+          color: white;
+          text-decoration: none;
+        }
+        
+      }
+    }
+  }
+  .target {
+    position: absolute;
+    border-bottom: 4px solid transparent;
+    z-index: -1;
+    transform: translateX(-60px);
+  }
+  
+  nav#desktop-nav a,
+  .target {
+    transition: all .35s ease-in-out;
+  }
+}
+
+

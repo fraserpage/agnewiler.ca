@@ -1,15 +1,17 @@
 <!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
+<html {% if section %} data-current="{{ section }}"{% endif %} data-url="{{page.url}}" lang="en">
 
 	{% include "components/head.njk" %}
 
-	<body>
+	<body class="mobile-nav">
 
-		<header>
-			<em>
-				<a href="{{ '/' | url }}">{{ metadata.title }}</a>
-			</em>
-			{% include "components/nav.njk" %}
+		<header id="header" class="{% if page.url !== "/" %} show-header-always {% endif %}" >
+			<div class="content">
+				<div class="logo">
+					<a href="{{ '/' | url }}">{{ settings.title | safe }}</a>
+				</div>
+				{% include "components/nav.njk" %}
+			</div>
 		</header>
 
 		<main>

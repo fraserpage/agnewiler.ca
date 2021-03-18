@@ -7,38 +7,47 @@ const html = htm.bind(h);
 const Post = createClass({
   render() {
     const entry = this.props.entry;
-
+    var image = entry.getIn(["data", "mainImage","image"]);
+    var mainImage = this.props.getAsset(image);
     return html`
       <main>
-        <article>
-          <h1>${entry.getIn(["data", "title"], null)}</h1>
-          <p>
-            <small>
-              <time
-                >${
-                  format(
-                    entry.getIn(["data", "date"], new Date()),
-                    "dd MMM, yyyy"
-                  )
-                }</time
-              >
-              ${" by Author"}
-            </small>
-          </p>
 
-          <p>${entry.getIn(["data", "summary"], "")}</p>
+        <article class="post">
+          <div class="content">
+            <h1 class="headline">${entry.getIn(["data", "title"], null)}</h1>
+            <p class="post-meta">
+            ${entry.getIn(["data", "author"], null)} |
+              <time> ${
+                format(
+                  entry.getIn(["data", "date"], new Date()),
+                  "dd MMM, yyyy"
+                )
+              }</time>
+            </p>
 
-          ${this.props.widgetFor("body")}
-          <p>
-            ${
-              entry.getIn(["data", "tags"], []).map(
-                tag =>
-                  html`
-                    <a href="#" rel="tag">${tag}</a>
-                  `
-              )
-            }
-          </p>
+              <figure>
+                <img class="post-image" src="${mainImage.toString()}" alt="{{mainImage.alt}}"/>
+              
+                  <figcaption>
+                    ${entry.getIn(["data", "mainImage","caption"], null)}
+                  </figcaption>
+              </figure>
+
+            ${this.props.widgetFor("body")}
+
+              <p class="tags">
+               Tagged: 
+              ${
+                entry.getIn(["data", "tags"], []).map(
+                  tag =>
+                    html`
+                      <a href="#" rel="tag" class="tag">${tag}</a>
+                    `
+                )
+              }
+              </p>
+
+          </div>
         </article>
       </main>
     `;

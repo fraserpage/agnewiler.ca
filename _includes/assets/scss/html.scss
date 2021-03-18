@@ -1,0 +1,65 @@
+@use "variables" as v;
+
+:root {
+	--primary: blue;
+	--secondary: white;
+	--background: white;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+	overflow: hidden auto;
+	padding: 0;
+	margin: 0;
+	font-family: v.$font-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+#header.show-header-always ~ main{
+	padding-top:3.4rem;
+}
+main {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
+.content{
+	padding: 1rem v.$content-padding;
+	max-width: v.$content-max-width;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+
+	> :first-child {
+		margin-top: 0;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+

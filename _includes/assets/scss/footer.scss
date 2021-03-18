@@ -1,0 +1,65 @@
+@use "variables" as v;
+
+footer{
+  background-color: v.$dark-purple;
+  color: white;
+  font-family: v.$font-sans;
+  font-size: 16px;
+  padding: 2rem 0;
+  .row{
+    .col{
+      flex: 0;
+      white-space: nowrap;
+    }
+    .col:last-of-type{
+      margin-left: auto;
+    }
+  }
+  h2{
+   margin-bottom: 0.25em;
+   font-weight: 600;
+   font-size: 1.35rem;
+  }
+  h3{
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    font-weight: 500;
+    font-size: 1.35rem;
+  }
+  p{
+    margin: 0;
+  }
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 775px){
+  footer{
+    .row.no-wrap{
+      flex-wrap: wrap;
+      .col:first-of-type{
+        width: 100%;
+        flex: 0 0 auto;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  footer{
+    .row{
+      .col{
+        width: 100%;
+        flex: 0 0 auto;
+        margin-bottom: 1rem;
+        white-space: wrap;
+      }
+    }
+  }
+}

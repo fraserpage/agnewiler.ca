@@ -1,0 +1,48 @@
+@use 'variables' as v;
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -#{v.$col-gap};
+  &.no-wrap{
+    flex-wrap: nowrap;
+  }
+  .col,
+  [class*=col-]{
+    flex: 0 0 auto;
+    padding-left: #{v.$col-gap};
+    padding-right: #{v.$col-gap};
+    
+    > :first-child{
+      margin-top:0
+    }
+  }
+  .col{
+    flex: 1;
+  }
+  .col-2{
+    width: percentage(2/12);
+  }
+  .col-3{
+    width: 25%;
+  }
+  .col-4{
+    width: percentage(4/12);
+  }
+  .col-5{
+    width: percentage(5/12);
+  }
+  .col-6{
+    width: 50%;
+  }
+  .col-7{
+    width: percentage(7/12);
+  }
+  .col-8{
+    width: percentage(8/12);
+  }
+  .col-9{
+    width: percentage(9/12);
+  }
+}
+

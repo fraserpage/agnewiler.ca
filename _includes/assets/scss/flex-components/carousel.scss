@@ -1,0 +1,100 @@
+
+/* Carousel */
+.carousel{
+	position: relative;
+	padding: 4rem 0;
+}
+html[data-url="/"] .carousel{
+	padding: min(8rem,15vh) 0;
+}
+
+.carousel .headline {
+	position: relative;
+	z-index: 1;
+	flex: 1;
+	justify-content: center;
+	display: flex;
+  flex-direction: column;
+  padding-top: 10vh;
+  padding-bottom: 5vw;
+}
+
+html[data-url="/"] .carousel .headline h1{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 22px;
+	line-height: 1.25;
+	color: #FFFFFF;
+}
+
+@media screen and (max-width: 650px){
+	html[data-url="/"] .carousel .headline h1{
+			font-size: calc(0.5rem + 3.2vw);
+	}
+}
+@media screen and (max-height: 400px){
+	html[data-url="/"] .carousel .headline h1{
+			font-size: 7vh;
+			margin-top: 0;
+	}
+}
+
+.carousel .headline h1,
+html[data-url="/"] .carousel .headline h2{
+	font-style: normal;
+	font-weight: 900;
+	font-size: 64px;
+	line-height: 1.05;
+	color: #FFFFFF;
+	margin: 0;
+}
+@media screen and (max-width: 650px){
+	.carousel .headline h1,
+	html[data-url="/"] .carousel .headline h2{
+			font-size: 10vw;
+	}
+}
+@media screen and (max-height: 400px){
+	.carousel .headline h1,
+	html[data-url="/"] .carousel .headline h2{
+			font-size: 14vh;
+	}
+}
+
+.carousel .slider{
+	position: absolute;
+	z-index: 0;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+}
+.carousel .slider:after{
+	content:"";
+	background-color: #343BFF;
+	opacity: 0.31;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+}
+
+.carousel .slider img{
+	object-fit: cover;
+  height: 100%;
+	width: 100%;
+	position: absolute;
+	transition: opacity 1s;	
+	opacity: 0;
+	&.current-slide{
+		opacity: 1;
+	}
+}
+
+img[data-loaded]{
+
+}
+img[data-loaded="false"]{
+
+}

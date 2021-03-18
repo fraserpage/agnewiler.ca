@@ -2,30 +2,38 @@
 layout: layouts/base.njk
 section: post
 ---
-
-<article>
-  <h1>{{ title }}</h1>
-  <p>
-    <small>
-      <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time> by <a href="/authors/{{ author | slug }}/">{{ author }}</a>
-    </small>
-  </p>
-
-  {{ layoutContent | safe }}
-
-  {% if tags %}
-    <p>
-    {% for tag in tags %}
-      {%- if tag != "post" -%}
-        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-        <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-      {%- endif -%}
-    {% endfor %}
+<article class="post">
+  <div class="content">
+    <h1 class="headline">{{ title }}</h1>
+    <p class="post-meta">
+      {{ author }} |
+      <time datetime="{{ date | machineDate }}"> {{ date | readableDate }}</time>
     </p>
-  {% endif %}
 
+    {% if mainImage.image %}
+      <figure>
+        <img class="post-image" src="{{mainImage.image}}" alt="{{mainImage.alt}}">
+        {% if mainImage.caption %}
+          <figcaption>
+            {{mainImage.caption | renderMarkdown | safe}}
+          </figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
+    {{ layoutContent | safe }}
+
+    {% if tags %}
+      <p class="tags {{tags.length}}">
+      {% set first = true %}
+      {% for tag in tags %}
+        {%- if tag != "post" -%}
+          {% if first == true %} Tagged: {% set first = false %} {% endif %}
+          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+          <a href="{{ tagUrl | url }}" rel="tag" class="tag">{{ tag }}</a>
+        {%- endif -%}
+      {% endfor %}
+      </p>
+    {% endif %}
+  </div>
 </article>
 
-<nav>
-  <a href="{{ '/blog/' | url }}">← Blog index</a>
-</nav>

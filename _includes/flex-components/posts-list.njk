@@ -1,0 +1,18 @@
+<div class="content">
+  <h3>
+   {{section.heading}} 
+  </h3>
+  {% set number = section.num %}
+  {% set posts = collections.post %}
+  {% set postslist = posts | reverse | limit(number) %}
+
+  {% include "../components/postslist.njk" %}
+
+  {% set totalPosts = posts | length %}
+  {% if totalPosts > number %}
+    <div class="text-right">
+      <a class="button" href="../posts">{{section.button}}</a>
+    </div>
+  {% endif %}
+  
+</div>

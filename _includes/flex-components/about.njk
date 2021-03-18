@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="row">
+    <div class="col-3">
+      <div class="about-photo">
+          <img src="{{section.image.image}}" alt="{{section.image.alt}}">
+      </div>
+    </div>
+    <div class="about-text col-7">
+      {% set words = section.highlightWords %}
+      <h3 class="about-headline">{{section.headline | highlightKeywords(words) | safe}}</h3>
+      {{section.text | renderMarkdown | safe }}
+    </div>
+  </div>
+</div>

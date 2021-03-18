@@ -1,0 +1,39 @@
+@use '../variables' as v;
+
+.cta{
+  .cta-background{
+    background-size: cover;
+    background-position-y: 90%;
+    position: relative;
+    &:after{
+      content: "";
+      position: absolute;
+      top:0;
+      left:0;
+      right: 0;
+      bottom: 0;
+      background-color: #FF66B9;
+      opacity: 0.3;
+    }
+    .cta-text{
+      background-color: white;
+      width: 28rem;
+      max-width: 100%;
+      margin: 4rem auto;
+      padding: 1rem 2 * v.$col-gap;
+      z-index: 1;
+      position: relative;
+      a{
+        font-family: v.$font-sans;
+        font-weight: 500;
+        font-size: 22px;
+        text-decoration-skip-ink: none;
+        text-underline-offset: -0.15em;
+        text-decoration: underline 0.3em v.$green;
+        &[href*='tel:']{
+          text-decoration: underline 0.3em v.$pink;
+        }
+      }
+    }
+  }
+}

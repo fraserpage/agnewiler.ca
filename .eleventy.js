@@ -2,12 +2,8 @@ const { DateTime } = require("luxon");
 const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function(eleventyConfig) {
-
-  // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add
   // layout aliases! Say you have a bunch of existing content using
@@ -22,9 +18,10 @@ module.exports = function(eleventyConfig) {
   // Add support for maintenance-free post authors
   // Adds an authors collection using the author key in our post frontmatter
   // Thanks to @pdehaan: https://github.com/pdehaan
+  /* 
   eleventyConfig.addCollection("authors", collection => {
-    const blogs = collection.getFilteredByGlob("posts/*.md");
-    return blogs.reduce((coll, post) => {
+    const posts = collection.getFilteredByGlob("posts/*.md");
+    return posts.reduce((coll, post) => {
       const author = post.data.author;
       if (!author) {
         return coll;
@@ -36,10 +33,11 @@ module.exports = function(eleventyConfig) {
       return coll;
     }, {});
   });
+  */
 
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
+    return DateTime.fromJSDate(dateObj).toFormat("LLLL d, yyyy");
   });
 
   // Date formatting (machine readable)
@@ -97,6 +95,42 @@ module.exports = function(eleventyConfig) {
     .use(markdownItAnchor, opts)
   );
 
+  // Add a 'renderMarkdown' filter for processing markdown from json in _data
+  // Usage {{ data | renderMarkdown | safe }}
+  const mdRender = new markdownIt(options);
+  eleventyConfig.addFilter("renderMarkdown", function(rawString) {
+    return mdRender.render(rawString);
+  });
+
+  //Add filter to highlight certian words
+  eleventyConfig.addFilter("highlightKeywords", function(textString, words) {
+
+    var colors = ['purple', 'green', 'pink', 'yellow'];
+    
+    function wrapWords(word, index){
+      let i = index % colors.length;
+      textString = textString.replace(word, "<span class='"+colors[i]+"'>"+word+"</span>");
+    }
+    
+    words.forEach(wrapWords);
+    
+    return textString;
+  });
+
+  //Add limit filter to nunjucks for retrieving only a few blog posts
+  eleventyConfig.addNunjucksFilter("limit", (arr, limit) => arr.slice(0, limit));
+
+  //Add filter to highlight current page + current page ancestor
+  //Input page.url and other url - outputs 'current-page' if they match the regex
+  eleventyConfig.addFilter("currentPage", function(url, matchUrl) {
+
+    const regex = new RegExp('^'+url+'($|/)')
+    if (regex.test(matchUrl)){
+      return "class='current-page'";
+    }
+  });
+
+
   return {
     templateFormats: ["md", "njk", "html", "liquid"],
 
@@ -117,3 +151,4 @@ module.exports = function(eleventyConfig) {
     }
   };
 };
+

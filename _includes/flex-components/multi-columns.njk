@@ -1,0 +1,10 @@
+<div class="content">
+  <h3>
+    {{section.heading}}
+  </h3>
+  <div class="row">
+    {% for col in section.columns %}
+      <div class="col">{{col | renderMarkdown | safe }}</div>
+    {% endfor %}
+  </div>
+</div>

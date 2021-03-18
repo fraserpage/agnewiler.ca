@@ -1,0 +1,12 @@
+{% for section in sections %}
+
+  {% if section.id %}
+    {% set id = section.id %}
+  {% else %}
+    {% set id = "section-"+loop.index %}
+  {% endif %}
+
+  <section id="{{id}}" class="{{section.type}}">
+    {% include "flex-components/"+section.type+".njk" %}
+  </section>
+{% endfor %}

@@ -1,0 +1,35 @@
+@use 'variables' as v;
+
+.post{
+  padding: 5rem 0;
+  .content{
+    max-width: 50rem;
+  }
+  h1.headline{
+    font-size: 3rem;
+    margin: 0;
+  }
+  .tags,
+  .post-meta{
+    font-family: v.$font-sans;
+    font-weight: 500;
+  }
+  p.tags{
+    margin-top: 3rem;
+  }
+  figure{
+    margin: 0 0 2.5rem 0;
+    figcaption{
+      font-size: 0.9rem;
+      font-family: v.$font-sans;
+      font-weight: 400;
+      color:#555;
+      p{
+        margin-top:0;
+      }
+    }
+  }
+  img{
+    width: 100%;
+  }
+}

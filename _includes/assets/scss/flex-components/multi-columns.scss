@@ -1,0 +1,41 @@
+@use '../variables' as v;
+
+.multi-columns{
+  padding: 2rem 0;
+  ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li{
+      font-family: v.$font-sans;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 0.6em;
+      line-height: 1.3;
+    }
+  }
+}
+
+@media screen and (max-width: 775px){
+  .multi-columns{
+    .row{
+      flex-wrap: wrap;
+      .col:first-of-type{
+        width: 100%;
+        flex: 0 0 auto;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  .multi-columns{
+    .row{
+      .col{
+        width: 100%;
+        flex: 0 0 auto;
+      }
+    }
+  }
+}

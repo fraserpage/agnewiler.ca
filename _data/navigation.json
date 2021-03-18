@@ -1,0 +1,46 @@
+{
+  "homeNav": [
+    {
+      "text": "About",
+      "url": "#about"
+    },
+    {
+      "text": "Writing",
+      "url": "#writing"
+    },
+    {
+      "text": "Partners and Clients",
+      "url": "#partners-and-clients"
+    },
+    {
+      "text": "Services",
+      "url": "#services"
+    },
+    {
+      "text": "Contact",
+      "url": "#contact"
+    }
+  ],
+  "mainNav": [
+    {
+      "text": "About",
+      "url": "/#about"
+    },
+    {
+      "text": "Writing",
+      "url": "/posts"
+    },
+    {
+      "text": "Partners and Clients",
+      "url": "/#partners-and-clients"
+    },
+    {
+      "text": "Services",
+      "url": "/#services"
+    },
+    {
+      "text": "Contact",
+      "url": "/#contact"
+    }
+  ]
+}

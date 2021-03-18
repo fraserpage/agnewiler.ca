@@ -5,36 +5,177 @@ backend:
 # Uncomment below to enable drafts
 # publish_mode: editorial_workflow
 
+# Please run "npx netlify-cms-proxy-server" for local backend
+local_backend: true
+
 media_folder: "static/img" # Media files will be stored in the repo under images/uploads
 
 collections:
   # Our blog posts
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Post" # Used in the UI
+  - name: "posts" # Used in routes, e.g., /admin/collections/posts
+    label: "Posts" # Used in the UI
+    label_singular: "Post"
     folder: "posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "Anonymous" }
-      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Brendan Agnew-Iler" }
+      - { label: "Summary", name: "summary", widget: "text", hint: "The Summary is displayed in the post preview. This text is not shown on the post page." }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - label: Main image
+        name: mainImage
+        widget: object
+        fields:
+        - { label: Image, name: image, widget: image }
+        - { label: Alt text, name: alt, widget: text }
+        - { label: Caption, name: caption, widget: markdown, required: false }
       - { label: "Body", name: "body", widget: "markdown" }
   # Our pages e.g. About
   - name: "pages"
-    label: "Page"
+    label: "Pages"
+    label_singular: "Page"
     folder: "pages"
-    create: false # Change to true to allow editors to create new pages
+    create: true # Change to true to allow editors to create new pages
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Permalink", name: "permalink", widget: "string" }
-      - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
-        name: "eleventyNavigation"
-        widget: "object"
+      - { label: "Page Slug", name: "permalink", hint: "The address for the page, ending in '/'. I.e: agnewiler.ca/[slug]/", widget: "string", pattern: ['^([a-z0-9]+(?:-[a-z0-9]+)*)?\/$','A slug can have no spaces or special characters and must end with "/"'] }
+      - label: 'Page Sections'
+        label_singular: 'Page Section'
+        name: 'sections'
+        widget: 'list'
+        types:
+          - label: 'Text section'
+            name: 'text'
+            widget: object
+            summary: '{{fields.heading}}'
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Heading, name: heading, widget: string, required: false }
+              - { label: Text Area, name: text, widget: markdown }
+          - label: 'About block'
+            name: 'about'
+            widget: object
+            summary: '{{fields.headline}}'
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Heading, name: headline, widget: string }
+              - { label: Highlight words, name: highlightWords, widget: list, default: "strategy, dialogue, advocacy, action"}
+              - label: Image
+                name: image
+                widget: object
+                fields:
+                - { label: Image, name: image, widget: image }
+                - { label: Alt text, name: alt, widget: text }
+              - { label: Text, name: text, widget: markdown}
+              - { label: Button, name: button, widget: string, required: false }
+          - label: 'Full-width Image with optional Headline'
+            name: 'carousel'
+            widget: object
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Text, name: textArea, widget: markdown, required: false }
+              - label: "Images"
+                label_singular: "Image"
+                name: "images"
+                hint: "Add more images to make a slideshow"
+                widget: "list"
+                fields:
+                  - {label: Image, name: image, widget: image}
+                  - {label: Alt text, name: alt, widget: string }
+              - { label: Slideshow timing (seconds), name: timer, widget: number, default: 10, value_type: "int", min: 1, required: false }
+          - label: 'Call to Action'
+            name: 'cta'
+            widget: object
+            summary: '{{fields.heading}}'
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: markdown}
+              - { label: Background Image, name: image, widget: image }
+          - label: 'Logo grid'
+            name: 'logo-grid'
+            widget: object
+            summary: '{{fields.heading}}'
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Heading, name: heading, widget: string }
+              - label: "Logos"
+                label_singular: "Logo"
+                name: "logos"
+                widget: "list"
+                fields:
+                  - {label: Logo, name: image, widget: image}
+                  - {label: Alt text, name: alt, widget: string }
+          - label: 'Multi-column block'
+            name: 'multi-columns'
+            widget: object
+            summary: '{{fields.heading}}'
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Heading, name: heading, widget: string, required: false }
+              - label: Text columns
+                label_singular: 'Column'
+                name: columns
+                widget: list
+                field: { label: Column, name: col, widget: markdown }
+          - label: 'Recent posts'
+            name: 'posts-list'
+            widget: object
+            summary: '{{fields.heading}}'
+            fields:
+              - { label: Section ID, name: id, widget: string, required: false, pattern: ['^([a-z]+[a-z0-9]+(?:-[a-z0-9]+)*)?$','Must be numbers, letters and dashes only and may not start with a number.'] }
+              - { label: Heading, name: heading, widget: string }
+              - label: Number of posts
+                name: num
+                widget: "number"
+                default: 3
+                value_type: "int"
+                min: 1
+                max: 60
+              - { label: Button, name: button, widget: string, hint: "Button linking to posts page will be displayed if there are more posts than displayed here." }
+  - label: "Site Settings"
+    name: "settings"
+    editor:
+      preview: false
+    files:
+      - label: "Navigation"
+        name: "navigation"
+        file: "_data/navigation.json"
         fields:
-          - { label: "Key", name: "key", widget: "string" }
-          - { label: "Order", name: "order", widget: "number", default: 0 }
-      - { label: "Body", name: "body", widget: "markdown" }
+          - label: Home Page Navigation Menu
+            label_singular: Nav Item
+            name: homeNav
+            widget: list
+            collapsed: false
+            fields:
+              - { label: Title, name: text, widget: string }
+              - { label: URL, name: url, widget: string }
+          - label: Site-wide Navigation Menu
+            label_singular: Nav Item
+            name: mainNav
+            widget: list
+            collapsed: false
+            fields:
+              - { label: Title, name: text, widget: string }
+              - { label: URL, name: url, widget: string }
+      - label: "Site Footer"
+        name: "footer"
+        file: "_data/footer.json"
+        fields:
+          - { label: Heading Area, name: heading, widget: markdown }
+          - { label: Column 1, name: col1, widget: markdown }
+          - { label: Column 2, name: col2, widget: markdown }
+          - { label: Column 3, name: col3, widget: markdown }
+      - label: "Meta Settings"
+        name: "settings"
+        file: "_data/settings.json"
+        fields:
+          - { label: Site Title, name: title, widget: string }
+          - { label: Site Tagline, name: tagline, widget: string }
+          - { label: Author, name: author, widget: string }
+          - { label: URL, name: url, widget: string }
+

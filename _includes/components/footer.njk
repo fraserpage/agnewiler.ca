@@ -1,6 +1,37 @@
 <footer>
-  <small>
-    This project is maintained by <a href="https://www.danurbanowicz.com">Dan Urbanowicz</a>.
-    Check out the <a href="{{ pkg.repository.url }}">GitHub repo</a>.
-  </small>
+  <div class="content">
+    <div>
+      {{footer.heading | renderMarkdown | safe }}
+    </div>
+    <div class="row no-wrap">
+      <div class="col">
+        {{footer.col1 | renderMarkdown | safe}}
+      </div>
+      <div class="col">
+        {{footer.col2 | renderMarkdown | safe}}
+      </div>
+      <div class="col">
+        {{footer.col3 | renderMarkdown | safe}}
+      </div>
+    </div>
+  </div>
+
 </footer>
+
+{# Build 'navList' array for auto highlighting the nav menu as you scroll #}
+{% if page.url == "/" %}
+  {% set nav = navigation.homeNav %}
+  {% set comma = joiner() %}
+  <script>
+    const navList = [
+  {%- for entry in nav %} {{comma()}} "{{entry.url}}" {%- endfor %}
+    ]
+  </script>
+{% endif %}
+<!--
+{% set jsfoot %}
+  {% include "assets/js/inline-footer.js" %}
+{% endset %}
+<script>{{ jsfoot | jsmin | safe }}</script>
+-->
+<script src="/_includes/assets/js/inline-footer.js"></script>
