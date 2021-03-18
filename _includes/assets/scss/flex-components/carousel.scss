@@ -6,11 +6,15 @@
 }
 html[data-url="/"] .carousel{
 	padding: min(8rem,15vh) 0;
+	min-height: 90vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .carousel .headline {
 	position: relative;
 	z-index: 1;
+	width: 100%;
 	flex: 1;
 	justify-content: center;
 	display: flex;
