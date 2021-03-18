@@ -49,7 +49,7 @@ collections:
         widget: 'list'
         types:
           - label: 'Text section'
-            name: 'text'
+            name: 'text-section'
             widget: object
             summary: '{{fields.heading}}'
             fields:

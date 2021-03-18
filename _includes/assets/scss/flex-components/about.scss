@@ -16,19 +16,17 @@
     font-size:36px;
     line-height: 1.2;
     span{
-      text-decoration-skip-ink: none;
-      text-underline-offset: -0.15em;
       &.purple{
-        text-decoration: underline 0.3em v.$purple;
+        @include v.text-underline( v.$purple);
       }
       &.green{
-        text-decoration: underline 0.3em v.$green;
+        @include v.text-underline(v.$green);
       }
       &.pink{
-        text-decoration: underline 0.3em v.$pink;
+        @include v.text-underline(v.$pink);
       }
       &.yellow{
-        text-decoration: underline 0.3em v.$yellow;
+        @include v.text-underline(v.$yellow);
       }
       
     }

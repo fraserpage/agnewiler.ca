@@ -27,11 +27,9 @@
         font-family: v.$font-sans;
         font-weight: 500;
         font-size: 22px;
-        text-decoration-skip-ink: none;
-        text-underline-offset: -0.15em;
-        text-decoration: underline 0.3em v.$green;
+        @include v.text-underline(v.$green);
         &[href*='tel:']{
-          text-decoration: underline 0.3em v.$pink;
+          @include v.text-underline(v.$pink);
         }
       }
     }

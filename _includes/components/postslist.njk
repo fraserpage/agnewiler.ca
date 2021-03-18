@@ -8,10 +8,12 @@
 					<image class="post-image" src="{{post.data.mainImage.image}}" alt="{{post.data.mainImage.alt}}">
 				{% endif %}
 				<div class="post-content">
-					<h3>
-						{% if post.data.title %}
-							{{ post.data.title }}
-						{% endif %}
+					<h3> 
+						<span>
+							{% if post.data.title %}
+								{{ post.data.title }}
+							{% endif %}
+						</span>
 					</h3>
 					<p class="post-meta">
 						{{ post.data.author }} | 
