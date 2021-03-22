@@ -138,7 +138,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       var elementPosition = element.getBoundingClientRect().top;
       var offsetPosition = elementPosition - headerOffset;
 
-      document.body.scrollBy({
+      window.scrollBy({
         top: offsetPosition,
         behavior: "smooth"
    });
@@ -191,6 +191,16 @@ function mobileMenu() {
     animateUnderline(currentPage, false);
   }
 }
+
+//If clicking on a mobile nav link, close the nav
+document.querySelectorAll('#mobile-nav a').forEach(navlink => {
+  navlink.addEventListener('click', function (e) {
+
+    document.body.classList.remove("nav-open");
+    
+  });
+});
+
 
 // ----------------------
 //Click on mobile nav button
