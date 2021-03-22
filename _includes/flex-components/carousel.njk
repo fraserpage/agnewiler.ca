@@ -4,12 +4,43 @@
   {% endif %}
 </div>
 
-<div class="slider {% if section.images.length > 1 %} slideshow {% endif %}" data-length="{{section.images.length}}" data-timing="{{section.timer}}" data-current-slide="0">
-  {% for image in section.images %}
-    {% if loop.index == 1 %}
-      <img class="current-slide" data-loaded="true" src="{{image.image}}" alt="{{image.alt}}">
-    {% else %}
-      <img  data-loaded="false" data-src="{{image.image}}" alt="{{image.alt}}">
-    {% endif %}
-  {% endfor %}
-</div>
+{% if section.images.length > 1 %} 
+
+  <div class="slider slideshow" data-length="{{section.images.length}}" data-timing="{{section.timer}}" data-current-slide="0" data-id="{{loop.index}}">
+    {% for image in section.images %}
+      {% if loop.index == 1 %}
+        <img class="current-slide" data-loaded="true" src="{{image.image}}" alt="{{image.alt}}">
+      {% else %}
+        <img  data-loaded="false" data-src="{{image.image}}" alt="{{image.alt}}">
+      {% endif %}
+    {% endfor %}
+    <div class="slideshow-controls">
+      <button class="prev">
+        <div class="label">Previous</div>
+        <div class="control-icon"></div>
+      </button>
+      <button class="play-pause">
+        <div class="label">Pause</div>
+        <div class="control-icon"></div>
+      </button>
+      <button class="next">
+        <div class="label">Next</div>
+        <div class="control-icon"></div>
+      </button>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="slider">
+
+    {% for image in section.images %}
+        <img class="current-slide" src="{{image.image}}" alt="{{image.alt}}">
+    {% endfor %}
+
+  </div>
+
+{% endif %}
+
+
+

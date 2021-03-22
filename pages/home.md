@@ -11,6 +11,8 @@ sections:
     images:
       - image: /static/img/streetcar-2000w.jpg
         alt: A street in Toronto
+      - image: /static/img/jorge-vasconez-ruucnxcqtni-unsplash.jpg
+        alt: city
     timer: 3
   - type: about
     headline: Putting progressive ideas to work through strategy, dialogue, advocacy

@@ -604,6 +604,10 @@ html[data-url="/"] .carousel {
   display: flex;
   flex-direction: column;
 }
+html[data-url="/"] .carousel .headline {
+  padding-top: 10vh;
+  padding-bottom: 5vw;
+}
 
 .carousel .headline {
   position: relative;
@@ -613,8 +617,6 @@ html[data-url="/"] .carousel {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding-top: 10vh;
-  padding-bottom: 5vw;
 }
 
 html[data-url="/"] .carousel .headline h1 {
@@ -688,6 +690,108 @@ html[data-url="/"] .carousel .headline h2 {
 }
 .carousel .slider img.current-slide {
   opacity: 1;
+}
+
+.slideshow-controls {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slideshow-controls button {
+  padding: 0.8rem;
+  margin: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  background: 0 0;
+  border: none;
+  position: relative;
+}
+.slideshow-controls button.play-pause {
+  background: none;
+  border: none;
+  position: relative;
+  padding: 0.6rem;
+  margin: 0 4px;
+}
+.slideshow-controls button.play-pause .control-icon {
+  height: 0.9rem;
+  width: 0.8rem;
+}
+.slideshow-controls button:hover, .slideshow-controls button:focus {
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+.slideshow-controls button:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+.slideshow-controls button .control-icon {
+  cursor: pointer;
+}
+
+.slideshow:not(.playing) .play-pause .control-icon {
+  width: 0;
+  height: 0;
+  border-top: 0.45rem solid #0000;
+  border-bottom: 0.45rem solid #0000;
+  border-left: 0.8rem solid white;
+}
+.slideshow:not(.playing) .play-pause:hover .control-icon .slideshow:not(.playing) .play-pause:active .control-icon {
+  border-left: 0.8rem solid #aa4334;
+}
+
+.slideshow.playing .play-pause .control-icon {
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+}
+
+.next .control-icon,
+.prev .control-icon {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.prev {
+  padding-right: 0.7em;
+}
+.prev .control-icon {
+  transform: rotate(225deg) skew(8deg, 8deg);
+}
+
+.next {
+  padding-left: 0.7em;
+}
+.next .control-icon {
+  transform: rotate(45deg) skew(8deg, 8deg);
+}
+
+/*button tooltips*/
+.slideshow-controls button .label {
+  visibility: hidden;
+  background-color: #7376C6;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 4px 0.6rem;
+  position: absolute;
+  z-index: 1;
+  right: 50%;
+  top: 2.3rem;
+  font-size: 0.85rem;
+  transform: translateX(50%);
+  white-space: nowrap;
+}
+.slideshow-controls button.next button.prev .label {
+  top: 2.35rem;
+}
+
+.slideshow-controls button:hover .label {
+  visibility: visible;
 }
 
 .cta .cta-background {
