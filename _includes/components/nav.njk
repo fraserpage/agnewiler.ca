@@ -8,7 +8,7 @@
   <ul>
     {%- for entry in nav %}
       <li>
-        <a href="{{ entry.url | url }}" {{ entry.url | currentPage(page.url) | safe }}>{{ entry.text }}</a>
+        <a href="{{ entry.url | url }}" class="{{ entry.url | currentPage(page.url) | safe }}">{{ entry.text }}</a>
       </li>
     {%- endfor %}
     <span class="target"></span>
@@ -26,12 +26,12 @@
   </button>
   <ul id="mobile-menu-ul">
     <li>
-      <a href="../">Home</a>
+      <a href="/" class="{{ "/" | currentPage(page.url) | safe }}">Home</a>
     </li>
     {% set color = cycler( "pink", "green", "yellow") %}
     {%- for entry in nav %}
       <li>
-        <a href="{{ entry.url | url }}" class="{% if entry.url == page.url %} current-page {% endif %} {{ color.next() }}"> {{ entry.text }}</a>
+        <a href="{{ entry.url | url }}" class="{{ entry.url | currentPage(page.url) | safe }} {{ color.next() }}"> {{ entry.text }}</a>
       </li>
     {%- endfor %}
   </ul>

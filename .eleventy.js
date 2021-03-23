@@ -126,7 +126,7 @@ module.exports = function(eleventyConfig) {
 
     const regex = new RegExp('^'+url+'($|/)')
     if (regex.test(matchUrl)){
-      return "class='current-page'";
+      return "current-page";
     }
   });
 

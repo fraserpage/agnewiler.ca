@@ -26,7 +26,7 @@
       a{
         font-family: v.$font-sans;
         font-weight: 500;
-        font-size: 22px;
+        font-size: 1.2rem;
         @include v.text-underline(v.$green);
         &[href*='tel:']{
           @include v.text-underline(v.$pink);
