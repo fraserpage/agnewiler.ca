@@ -111,7 +111,8 @@ if (typeof navList !== 'undefined') {
 //Using presence of 'navList' variable to do this only on the home page
 if (typeof navList !== 'undefined') {
   let firstSection = document.querySelector('main :first-child');
-  const threshold = 0.3;
+  // Threshold is % of way from bottom of top image section
+  const threshold = 0.7;
   let observer = new IntersectionObserver((entries, observer) => { 
     entries.forEach(entry => {
       if(entry.intersectionRatio <= threshold ){

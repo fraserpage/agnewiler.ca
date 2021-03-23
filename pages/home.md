@@ -38,7 +38,7 @@ sections:
       - advocacy
       - action
     image:
-      image: /static/img/bren.jpeg
+      image: /static/img/brendan-agnew-iler.jpg
       alt: Brendan Agnew-Iler
     id: about
   - type: posts-list

@@ -64,7 +64,7 @@ footer{
   }
 }
 
-@media screen and (max-width: 600px){
+@media (max-width: 600px), (max-height: 600px){
   footer{
     font-size: 80%;
     h2, h3{
