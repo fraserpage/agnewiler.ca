@@ -136,28 +136,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
       var element = document.querySelector(this.getAttribute('href'))
       var headerOffset = header.offsetHeight;
-      var elementPosition = element.getBoundingClientRect().top;
+      var elementPosition = element.offsetTop;
       var offsetPosition = elementPosition - headerOffset;
 
-      window.scrollBy({
-        top: offsetPosition,
-        behavior: "smooth"
-   });
+      scrollTo(offsetPosition, 500);
   });
 });
 
-// ----------------------
- // Throttle helper function
- // ----------------------
-function throttle(fn, wait) {
-  var time = Date.now();
-  return function() {
-    if ((time + wait - Date.now()) < 0) {
-      fn();
-      time = Date.now();
-    }
+
+// easing functions http://goo.gl/5HLl8
+Math.easeInOutQuad = function (t, b, c, d) {
+  t /= d/2;
+  if (t < 1) {
+    return c/2*t*t + b
   }
+  t--;
+  return -c/2 * (t*(t-2) - 1) + b;
+};
+
+// requestAnimationFrame for Smart Animating http://goo.gl/sx5sts
+var requestAnimFrame = (function(){
+  return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function( callback ){ window.setTimeout(callback, 1000 / 60); };
+})();
+
+function scrollTo(to, duration) {
+  // because it's so fucking difficult to detect the scrolling element, just move them all
+  function move(amount) {
+    document.documentElement.scrollTop = amount;
+    document.body.parentNode.scrollTop = amount;
+    document.body.scrollTop = amount;
+  }
+  function position() {
+    return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
+  }
+  var start = position(),
+    change = to - start,
+    currentTime = 0,
+    increment = 20;
+  duration = (typeof(duration) === 'undefined') ? 500 : duration;
+  var animateScroll = function() {
+    // increment the time
+    currentTime += increment;
+    // find the value with the quadratic in-out easing function
+    var val = Math.easeInOutQuad(currentTime, start, change, duration);
+    // move the document.body
+    move(val);
+    // do the animation unless its over
+    if (currentTime < duration) {
+      requestAnimFrame(animateScroll);
+    } 
+  };
+  animateScroll();
 }
+
 
 // ----------------------
 // Mobile Nav
