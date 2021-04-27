@@ -143,6 +143,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+//--------------
+// Smooth scrolling fn from here: 
+// https://medium.com/@roderickhsiao/implement-smooth-scrolling-79efb20b6535
+//--------------
 
 // easing functions http://goo.gl/5HLl8
 Math.easeInOutQuad = function (t, b, c, d) {

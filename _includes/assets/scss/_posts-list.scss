@@ -94,7 +94,7 @@
           padding-bottom: 0;
           .post-image{
             width: 50 - v.$col-gap;
-            height: auto;
+            height: 100%;
             object-fit: cover;
           }
           .post-content{
