@@ -6,7 +6,7 @@
 	<body class="mobile-nav">
 
 		<header id="header" class="{% if page.url !== "/" %} show-header-always {% endif %}" >
-			<div class="content">
+			<div class="content" id="header-inner">
 				<div class="logo">
 					<a href="{{ '/' | url }}">{{ settings.title | safe }}</a>
 				</div>

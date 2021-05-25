@@ -5,8 +5,9 @@
 
 const target = document.querySelector(".target");
 const links = document.querySelectorAll("#desktop-nav a");
-var currentPage = document.querySelector("#desktop-nav a.current-page");
+let currentPage = document.querySelector("#desktop-nav a.current-page");
 const header = document.getElementById("header");
+const headerInner = document.getElementById("header-inner");
 const nav = document.getElementById("desktop-nav");
 const colors = [ "#C673A0", "#73C699", "#EDD377"];
 
@@ -135,10 +136,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
 
       var element = document.querySelector(this.getAttribute('href'))
-      var headerOffset = header.offsetHeight;
+      var headerOffset = headerInner.offsetHeight;
       var elementPosition = element.offsetTop;
       var offsetPosition = elementPosition - headerOffset;
-
+console.log(headerOffset,elementPosition,offsetPosition);
       scrollTo(offsetPosition, 500);
   });
 });
