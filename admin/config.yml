@@ -2,13 +2,11 @@ backend:
   name: git-gateway
   branch: master # Branch to update (optional; defaults to master)
 
-# Uncomment below to enable drafts
-# publish_mode: editorial_workflow
-
 # Please run "npx netlify-cms-proxy-server" for local backend
 local_backend: true
-
-media_folder: "static/img" # Media files will be stored in the repo under images/uploads
+publish_mode: editorial_workflow
+site_url: https://agnewiler.ca
+media_folder: "static/img" 
 
 collections:
   # Our blog posts
@@ -16,6 +14,9 @@ collections:
     label: "Posts" # Used in the UI
     label_singular: "Post"
     folder: "posts" # The path to the folder where the documents are stored
+    editor: # Turning off previews until fixed
+      preview: false
+    preview_path: "posts/{{slug}}"
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
@@ -37,6 +38,9 @@ collections:
     label: "Pages"
     label_singular: "Page"
     folder: "pages"
+    editor: # Turning off previews until fixed
+      preview: false
+    preview_path: "{{slug}}"
     create: true # Change to true to allow editors to create new pages
     slug: "{{slug}}"
     fields:
