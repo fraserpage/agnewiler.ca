@@ -2,6 +2,7 @@ const { DateTime } = require("luxon");
 const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
+const metagen = require('eleventy-plugin-metagen');
 
 module.exports = function(eleventyConfig) {
 
@@ -79,6 +80,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("_includes/assets/");
 
+  /* Meta tag generator shortcode */
+  eleventyConfig.addPlugin(metagen);
+  
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
   let markdownItAnchor = require("markdown-it-anchor");
