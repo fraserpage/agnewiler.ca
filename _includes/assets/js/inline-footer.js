@@ -139,7 +139,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       var headerOffset = headerInner.offsetHeight;
       var elementPosition = element.offsetTop;
       var offsetPosition = elementPosition - headerOffset;
-console.log(headerOffset,elementPosition,offsetPosition);
       scrollTo(offsetPosition, 500);
   });
 });
