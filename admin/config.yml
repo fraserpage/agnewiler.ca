@@ -5,7 +5,7 @@ backend:
 # Please run "npx netlify-cms-proxy-server" for local backend
 local_backend: true
 publish_mode: editorial_workflow
-site_url: https://agnewiler.ca
+site_url: https://agnewiler.netlify.app/
 media_folder: "static/img" 
 
 collections:
