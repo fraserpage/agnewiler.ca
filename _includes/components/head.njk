@@ -1,13 +1,22 @@
 <head>
-  <meta charset="utf-8">
-  
+  {% if page.url === "/"%}
+    {% set pageTitle = [settings.title, " - ", settings.tagline] | join %}
+  {% else %}
+    {% set pageTitle = [title, " | ", settings.title, " - ", settings.tagline] | join %}
+  {% endif %}
+  {% metagen
+    title = pageTitle ,
+    desc = metaDescription or renderData.metaDescription or settings.description,
+    url = settings.url,
+    img = settings.socialImg,
+    img_alt = settings.socialImgAlt,
+    twitter_card_type = "summary_large_image",
+    twitter_handle = settings.twitter,
+    name = settings.author
+  %}
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cardo&family=Montserrat:wght@400;500;600;900&display=swap" rel="stylesheet">
-
   <link rel="dns-prefetch" href="https://identity.netlify.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" >
-  <title>{{ renderData.title or title or settings.title }}</title>
-  <meta name="description" content="{{ metaDescription or renderData.metaDescription or metadata.description }}">
   <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   {% set css %}
     {% include "assets/css/styles.css" %} 

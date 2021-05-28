@@ -181,5 +181,8 @@ collections:
           - { label: Site Title, name: title, widget: string }
           - { label: Site Tagline, name: tagline, widget: string }
           - { label: Author, name: author, widget: string }
+          - { label: Twitter Username, name: twitter, widget: string }
           - { label: URL, name: url, widget: string }
+          - { label: Default social sharing image, name: socialImg, widget: image }
+          - { label: Social sharing image 'alt' description, name: socialImgAlt, widget: image }
 
