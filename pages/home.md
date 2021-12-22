@@ -41,11 +41,6 @@ sections:
       image: /static/img/brendan-agnew-iler.jpg
       alt: Brendan Agnew-Iler
     id: about
-  - type: posts-list
-    num: 3
-    heading: Writing
-    button: See more stories
-    id: writing
   - type: logo-grid
     heading: Partners and Clients
     logos:
