@@ -18,16 +18,15 @@ sections:
     headline: Putting progressive ideas to work through strategy, dialogue, advocacy
       and action.
     text: >-
-      I am veteran communicator, organiser and educator. My entire career has
-      been at the intersection of politics, policy, and public engagement. I
-      work with clients and partners to guide progressive, sustainable projects
-      and policies from concept to completion.
+      My entire career has been at the intersection of politics, policy, and
+      public engagement. I work with clients and partners to guide progressive,
+      sustainable projects and policies from concept to completion.
 
 
-      My commitment to social change took me from community organizing to Toronto City Hall where I served as press secretary and senior advisor to Toronto Mayor David Miller. I saw first-hand how the biggest challenges thoughtful policies and smart projects faced were based on misunderstandings and poor communication. A network of light rail lines bringing higher order transit to the suburbs, for example, was taken as the first shot fired in the “war on the car”.
+      My commitment to social change took me from community organizing to Toronto City Hall where I served as press secretary and senior advisor to Toronto Mayor David Miller. I saw first-hand how the biggest challenges policies and projects faced were misunderstanding and poor communication.
 
 
-      After leaving City Hall, I joined Argyle Public Relationships to help bring the light rail lines to life and learn a real trade. In my eight years there, I worked on high-profile public issues such as transit investment and expansion, carbon pricing, science education, childcare, anti-racism, climate change, and public health. 
+      After leaving City Hall, I joined Argyle Public Relationships where I worked on high-profile public issues such as transit investment and expansion, carbon pricing, science education, childcare, anti-racism, climate change, and public health. 
 
 
       In 2019, I set up my own practice to focus on helping communities and movements advocate for progressive and sustainable change.
@@ -38,7 +37,7 @@ sections:
       - advocacy
       - action
     image:
-      image: /static/img/brendan-agnew-iler.jpg
+      image: /static/img/cropped-photo-3.jpg
       alt: Brendan Agnew-Iler
     id: about
   - type: logo-grid
