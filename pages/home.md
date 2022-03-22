@@ -10,7 +10,7 @@ sections:
       ## Public interest <br/> communications <br/> consultant
     images:
       - image: /static/img/ridefair_poster_f.jpeg
-        alt: A street in Toronto
+        alt: ridefair documentary poster
       - image: /static/img/jorge-vasconez-ruucnxcqtni-unsplash.jpg
         alt: city
     timer: 3
