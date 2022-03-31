@@ -37,7 +37,7 @@ sections:
       - advocacy
       - action
     image:
-      image: /static/img/cropped-photo-3.jpg
+      image: /static/img/brendan-agnew-iler.jpg
       alt: Brendan Agnew-Iler
     id: about
   - type: logo-grid
