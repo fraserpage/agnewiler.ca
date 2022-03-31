@@ -73,13 +73,8 @@ sections:
     id: services
   - type: cta
     heading: Get in Touch
-    body: >-
-      Do you have a project or problem that needs working on? Or just want to
-      pass some ideas by a willing ear? Drop me a line or give me a call. 
-
-
+    body: |-
       [brendan@agnewiler.ca](mailto:brendan@agnewiler.ca)
-
 
       [416 732-8764](tel:4167328764)
     image: /static/img/jorge-vasconez-ruucnxcqtni-unsplash.jpg
