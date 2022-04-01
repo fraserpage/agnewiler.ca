@@ -51,6 +51,8 @@ sections:
         alt: "Argyle: communicate with confidence"
       - image: /static/img/engineers.svg
         alt: Engineers without borders Canada
+      - image: /static/img/logo-blue.png
+        alt: ridefair logo
     id: partners-and-clients
   - type: multi-columns
     heading: Services
